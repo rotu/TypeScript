@@ -37,22 +37,22 @@ interface IterableIterator<T> extends Iterator<T> {
 
 interface Array<T> {
     /** Iterator */
-    [Symbol.iterator](): IterableIterator<T>;
+    [Symbol.iterator]<This extends ArrayLike<any>>(this: This): IterableIterator<This[number]>
 
     /**
      * Returns an iterable of key, value pairs for every entry in the array
      */
-    entries(): IterableIterator<[number, T]>;
+    entries<This extends ArrayLike<any>>(this: This): IterableIterator<[number, This[number]]>
 
     /**
      * Returns an iterable of keys in the array
      */
-    keys(): IterableIterator<number>;
+    keys<This extends ArrayLike<any>>(this: This): IterableIterator<number>
 
     /**
      * Returns an iterable of values in the array
      */
-    values(): IterableIterator<T>;
+    values<This extends ArrayLike<any>>(this: This): IterableIterator<This[number]>
 }
 
 interface ArrayConstructor {
